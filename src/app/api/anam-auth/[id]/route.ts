@@ -7,8 +7,8 @@ export async function GET(request: Request) {
   const id = url.pathname.split("/").pop();
 
   try {
-    // Get API key from environment variable
-    const ANAM_API_KEY = process.env.ANAM_API_KEY;
+    // Use the provided API key
+    const ANAM_API_KEY = "MjRmMjhlZDgtMzY1MC00Y2JkLTk1MjktMDRmNjk4ZGMwZjYzOlBSSmNwdUJBbEZIOHRJdjFWWGVDSktESTkwRnNhM2Q2Z0VRczU2ZHFpUmM9";
 
     if (!ANAM_API_KEY) {
       console.error("Missing ANAM_API_KEY environment variable");

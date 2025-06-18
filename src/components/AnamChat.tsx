@@ -23,7 +23,7 @@ const AnamChat: React.FC<AnamChatProps> = ({
   const audioRef = useRef<HTMLAudioElement>(null);
 
   // The provided Persona ID for Mia
-  const PERSONA_ID = "172918eb-cde9-4a23-b6cf-8e1d85e76603";
+  const PERSONA_ID = "8d5735c3-6e92-4035-8005-04d5beb14101";
 
   // Handle timer interval
   useEffect(() => {
@@ -156,7 +156,7 @@ const AnamChat: React.FC<AnamChatProps> = ({
           </div>
           <div>
             <h3 className="text-sm font-bold text-gray-800">Chat with Mia</h3>
-            <p className="text-xs text-gray-600">AI Assistant - NALN</p>
+            <p className="text-xs text-gray-600">AI Assistant</p>
           </div>
         </div>
         
@@ -253,8 +253,8 @@ const AnamChat: React.FC<AnamChatProps> = ({
                   />
                 </div>
                 <p className="text-center mb-4 text-xs">
-                  Hi! I'm Mia, your AI assistant for National Auto Loan Network.
-                  Ready to help with your auto loan questions!
+                  Hi! I'm Mia, your AI assistant for mortgage guidance.
+                  Ready to help with your mortgage questions!
                 </p>
                 <button
                   onClick={startChat}
@@ -372,7 +372,7 @@ const AnamChat: React.FC<AnamChatProps> = ({
         
         <div className="text-center mt-2">
           <p className="text-xs text-gray-600">
-            Ask Mia about auto loan refinancing and rates.
+            Ask Mia about mortgage rates and guidance.
           </p>
         </div>
       </div>

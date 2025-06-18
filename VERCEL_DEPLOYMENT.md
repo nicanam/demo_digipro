@@ -2,7 +2,7 @@
 
 ## 🎯 Status: **FULLY READY FOR VERCEL DEPLOYMENT**
 
-This Next.js application has been tested and is production-ready for Vercel deployment.
+This Next.js "Mortgage Example" application has been tested and is production-ready for Vercel deployment.
 
 ---
 
@@ -14,7 +14,7 @@ This Next.js application has been tested and is production-ready for Vercel depl
    ```bash
    git init
    git add .
-   git commit -m "Initial commit - National Auto Loan Network Anam Demo"
+   git commit -m "Initial commit - Mortgage Example"
    git branch -M main
    git remote add origin YOUR_GITHUB_REPO_URL
    git push -u origin main
@@ -26,20 +26,17 @@ This Next.js application has been tested and is production-ready for Vercel depl
    - Import from GitHub
    - Select your repository
 
-3. **Configure Environment Variables**
-   - In Vercel dashboard → Settings → Environment Variables
-   - Add: `ANAM_API_KEY` = `YWU0NDVjYTYtNmJkYS00ZGZjLWJkNjMtOTI1NTZiNzcwZGZiOmFiWHE5WmlOUWJTWFdqRC9KZlZWZTgycWp2eTZDamNhek1aOTNLcVoxelU9`
-
-4. **Deploy**
+3. **Deploy**
    - Click "Deploy"
    - Vercel will automatically detect Next.js and deploy
+   - **No environment variables needed** (API key is hardcoded for demo)
 
 ### Method 2: Vercel CLI
 
 ```bash
 npm i -g vercel
 vercel
-# Follow the prompts and add the environment variable when asked
+# Follow the prompts - no environment variables needed
 ```
 
 ---
@@ -53,18 +50,17 @@ vercel
 - ✅ All routes compiled successfully
 
 ### API Testing
-- ✅ Anam Auth API endpoint working
+- ✅ Anam Auth API endpoint working with new persona
 - ✅ Session token generation successful
-- ✅ Environment variable properly configured
+- ✅ API key properly configured (hardcoded for demo)
 - ✅ Edge runtime functioning correctly
 
 ### Functionality Testing
-- ✅ Homepage loads with NALN branding
-- ✅ Top bar image displays correctly
+- ✅ Homepage loads with image.png background
 - ✅ Mia avatar (300px) with pulsating animation
 - ✅ "Chat with Mia" text always visible and pulsating
 - ✅ Chat widget appears in bottom-right corner
-- ✅ Video chat integration working
+- ✅ Video chat integration working with mortgage persona
 - ✅ Responsive design verified
 
 ---
@@ -77,10 +73,10 @@ vercel
 - **Build output**: Static + Server-side rendering
 - **Dependencies**: All production-ready
 
-### Environment Variables Required
-```
-ANAM_API_KEY=YWU0NDVjYTYtNmJkYS00ZGZjLWJkNjMtOTI1NTZiNzcwZGZiOmFiWHE5WmlOUWJTWFdqRC9KZlZWZTgycWp2eTZDamNhek1aOTNLcVoxelU9
-```
+### Environment Variables
+**None required** - API key and persona ID are hardcoded for demo purposes:
+- **Persona ID**: `8d5735c3-6e92-4035-8005-04d5beb14101`
+- **API Key**: Embedded in `/api/anam-auth/[id]/route.ts`
 
 ### Vercel Configuration
 - **Build Command**: `npm run build` (automatic)
@@ -93,29 +89,27 @@ ANAM_API_KEY=YWU0NDVjYTYtNmJkYS00ZGZjLWJkNjMtOTI1NTZiNzcwZGZiOmFiWHE5WmlOUWJTWFd
 ## 🎨 Features Included
 
 ### Main Application
-1. **NALN Header**: Official top_bar.png branding
-2. **Personal ID Section**: Functional input form
-3. **Statistics Display**: "$2 Billion in auto loans refinanced..."
-4. **Image Panels**: Map (left_image.png) and Process (right_image.png)
-5. **Start Simulation Button**: Opens chat interface
+1. **Background**: Full-screen image.png as background
+2. **Simplified Layout**: Clean, minimal design focused on mortgage assistance
 
 ### Mia AI Chat Integration
 1. **Always Visible Elements**:
-   - 300px pulsating Mia avatar
+   - 300px pulsating Mia avatar (bottom-right)
    - Pulsating "Chat with Mia" text
    
 2. **Chat Widget** (Bottom-right corner):
    - 384px × 600px professional interface
-   - Video chat with Anam AI persona
+   - Video chat with Anam AI mortgage persona
    - Real-time status indicators
    - Professional controls and timer
-   - Background homepage remains visible
+   - Background image remains visible
 
 ### Anam AI Integration
-- **Persona ID**: `172918eb-cde9-4a23-b6cf-8e1d85e76603`
+- **Persona ID**: `8d5735c3-6e92-4035-8005-04d5beb14101`
 - **SDK Version**: @anam-ai/js-sdk v2.1.1
 - **Features**: Video chat, audio streaming, session management
 - **Error Handling**: Connection errors, loading states
+- **Focus**: Mortgage guidance and assistance
 
 ---
 
@@ -124,14 +118,15 @@ ANAM_API_KEY=YWU0NDVjYTYtNmJkYS00ZGZjLWJkNjMtOTI1NTZiNzcwZGZiOmFiWHE5WmlOUWJTWFd
 After deploying to Vercel, verify:
 
 1. **Homepage loads correctly**
-   - NALN header visible
-   - Images load properly
+   - image.png background displays
    - Mia avatar is pulsating
+   - Clean, minimal layout
 
 2. **Chat functionality works**
    - Click chat elements → widget appears
-   - Anam session initializes
+   - Anam session initializes with mortgage persona
    - Video/audio streams work
+   - Mortgage-focused messaging appears
 
 3. **Performance**
    - Fast loading times
@@ -152,4 +147,4 @@ After deploying to Vercel, verify:
 
 **Status**: ✅ **PRODUCTION READY**
 
-The application has been fully tested and is ready for immediate deployment to Vercel. All features are working correctly, and the build process is optimized for production. 
+The "Mortgage Example" application has been fully tested and is ready for immediate deployment to Vercel. All features are working correctly, the build process is optimized for production, and the mortgage-focused AI persona is configured and functional. 

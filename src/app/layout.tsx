@@ -5,9 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "National Auto Loan Network - Anam Demo",
+  title: "Mortgage Example",
   description:
-    "National Auto Loan Network - Experience seamless auto loan refinancing with over $2 billion in refinanced loans for over 100,000 satisfied customers since 2010. Chat with our AI assistant Mia.",
+    "Mortgage Example - AI-powered mortgage assistance with personalized guidance.",
 };
 
 export default function RootLayout({
