@@ -47,9 +47,14 @@ export default function Home() {
           
           {/* Pulsating Mia avatar - 300px */}
           <button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               console.log("🖱️ Avatar button clicked!");
               openAnamChat();
+            }}
+            onMouseDown={(e) => {
+              e.preventDefault(); // Prevent text selection
             }}
             className="relative w-[300px] h-[300px] rounded-full border-8 border-white shadow-2xl pulsating hover:scale-105 transition-transform duration-200 cursor-pointer overflow-hidden bg-white"
             style={{ 
@@ -61,7 +66,11 @@ export default function Home() {
               cursor: 'pointer', 
               overflow: 'hidden', 
               backgroundColor: 'white',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              MozUserSelect: 'none',
+              msUserSelect: 'none'
             }}
             type="button"
           >
@@ -74,8 +83,11 @@ export default function Home() {
                 height: '100%', 
                 objectFit: 'cover', 
                 borderRadius: '50%',
-                display: 'block' 
+                display: 'block',
+                pointerEvents: 'none',
+                userSelect: 'none'
               }}
+              draggable={false}
             />
           </button>
         </div>
