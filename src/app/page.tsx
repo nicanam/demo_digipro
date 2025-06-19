@@ -1,10 +1,18 @@
 "use client";
 import AnamChat from "@/components/AnamChat";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [isAnamChatOpen, setIsAnamChatOpen] = useState(false);
+  const [jsWorking, setJsWorking] = useState(false);
+
+  // Test that JavaScript is working
+  useEffect(() => {
+    console.log("✅ JavaScript is working! Home component mounted");
+    console.log("Chat state initialized:", isAnamChatOpen);
+    setJsWorking(true);
+  }, []);
 
   const openAnamChat = () => {
     console.log("🎯 Opening Anam chat...");
@@ -20,6 +28,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
+      {/* JavaScript Status Indicator */}
+      <div style={{ 
+        position: 'fixed', 
+        top: '10px', 
+        left: '10px', 
+        background: jsWorking ? 'green' : 'red', 
+        color: 'white', 
+        padding: '4px 8px', 
+        borderRadius: '4px', 
+        zIndex: 9999, 
+        fontSize: '12px' 
+      }}>
+        JS: {jsWorking ? '✅ WORKING' : '❌ NOT WORKING'} | Chat: {isAnamChatOpen ? 'OPEN' : 'CLOSED'}
+      </div>
+
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image 
@@ -46,10 +69,23 @@ export default function Home() {
               e.preventDefault();
               e.stopPropagation();
               console.log("🖱️ Avatar button clicked!");
+              console.log("Current chat state:", isAnamChatOpen);
               openAnamChat();
+              // Force update after small delay if needed
+              setTimeout(() => {
+                if (!isAnamChatOpen) {
+                  console.log("⚠️ Forcing state update...");
+                  setIsAnamChatOpen(true);
+                }
+              }, 100);
             }}
             onMouseDown={(e) => {
               e.preventDefault(); // Prevent text selection
+              console.log("👆 Mouse down on avatar");
+            }}
+            onTouchStart={(e) => {
+              console.log("📱 Touch start on avatar");
+              openAnamChat();
             }}
             className="relative w-[300px] h-[300px] rounded-full border-8 border-white shadow-2xl pulsating hover:scale-105 transition-transform duration-200 cursor-pointer overflow-hidden bg-white"
             style={{ 
