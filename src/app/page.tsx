@@ -45,15 +45,14 @@ export default function Home() {
               console.log("Mia avatar clicked");
               openAnamChat();
             }}
-            className="w-[300px] h-[300px] rounded-full overflow-hidden border-8 border-white shadow-2xl pulsating hover:scale-105 transition-transform duration-200 cursor-pointer"
+            className="relative w-[300px] h-[300px] rounded-full border-8 border-white shadow-2xl pulsating hover:scale-105 transition-transform duration-200 cursor-pointer overflow-hidden bg-white"
             type="button"
           >
-            <Image 
+            <img 
               src="/mia.png" 
               alt="Chat with Mia - AI Assistant" 
-              width={300} 
-              height={300}
-              className="w-full h-full object-cover pointer-events-none"
+              className="w-full h-full object-cover rounded-full"
+              style={{ display: 'block' }}
             />
           </button>
         </div>
