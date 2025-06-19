@@ -65,24 +65,31 @@ const AnamChat: React.FC<AnamChatProps> = ({
 
   const initAnamClient = async () => {
     try {
+      console.log(`🔑 Fetching session token for persona: ${PERSONA_ID}`);
       setIsLoadingAI(true);
+      
       // Fetch session token from our API
       const response = await fetch(`/api/anam-auth/${PERSONA_ID}`);
+      console.log(`📡 API Response status: ${response.status}`);
 
       if (!response.ok) {
         const errorData = await response.json();
+        console.error("❌ API Error:", errorData);
         throw new Error(errorData.error || "Failed to get Anam session token");
       }
 
       const { sessionToken } = await response.json();
+      console.log("✅ Session token received successfully");
 
       // Create Anam client with session token
+      console.log("🤖 Creating Anam client...");
       const client = createClient(sessionToken);
       setAnamClient(client);
+      console.log("✅ Anam client created successfully");
 
       return client;
     } catch (err: unknown) {
-      console.error("Error initializing Anam client:", err);
+      console.error("❌ Error initializing Anam client:", err);
       setError(
         err instanceof Error ? err.message : "Failed to initialize AI Persona"
       );
@@ -94,14 +101,31 @@ const AnamChat: React.FC<AnamChatProps> = ({
 
   const startChat = async () => {
     try {
+      console.log("🚀 Starting chat...");
       setIsLoadingAI(true);
       setElapsedTime(0);
+      setError(null);
 
       // Initialize Anam client if not already done
+      console.log("🔧 Initializing Anam client...");
       const client = await initAnamClient();
 
       if (!client) {
         throw new Error("Failed to initialize AI Persona");
+      }
+
+      console.log("✅ Anam client initialized successfully");
+      console.log("🎥 Starting video stream...");
+
+      // Check if video and audio elements exist
+      const videoElement = document.getElementById("anam-video-feed");
+      const audioElement = document.getElementById("anam-audio-feed");
+      
+      console.log("Video element found:", !!videoElement);
+      console.log("Audio element found:", !!audioElement);
+
+      if (!videoElement || !audioElement) {
+        throw new Error("Video or audio elements not found");
       }
 
       // Use element IDs instead of direct references
@@ -110,12 +134,19 @@ const AnamChat: React.FC<AnamChatProps> = ({
         "anam-audio-feed"
       );
 
+      console.log("🎬 Video stream started successfully");
       setIsChatActive(true);
     } catch (err: unknown) {
-      console.error("Error starting AI chat:", err);
-      setError(
-        err instanceof Error ? err.message : "Failed to start AI Persona"
-      );
+      console.error("❌ Error starting AI chat:", err);
+      
+      // More detailed error message
+      let errorMessage = "Failed to start AI Persona";
+      if (err instanceof Error) {
+        errorMessage = err.message;
+        console.error("Error details:", err.stack);
+      }
+      
+      setError(errorMessage);
       setIsChatActive(false);
     } finally {
       setIsLoadingAI(false);
@@ -280,6 +311,8 @@ const AnamChat: React.FC<AnamChatProps> = ({
           className="w-full h-full object-cover"
           autoPlay
           playsInline
+          muted
+          controls={false}
         ></video>
         <audio ref={audioRef} id="anam-audio-feed"></audio>
       </div>
