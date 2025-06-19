@@ -7,17 +7,24 @@ export default function Home() {
   const [isAnamChatOpen, setIsAnamChatOpen] = useState(false);
 
   const openAnamChat = () => {
-    console.log("Opening Anam chat...");
+    console.log("🎯 Opening Anam chat...");
+    console.log("Chat state before:", isAnamChatOpen);
     setIsAnamChatOpen(true);
+    console.log("Chat state after setting to true");
   };
   
   const closeAnamChat = () => {
-    console.log("Closing Anam chat...");
+    console.log("🔒 Closing Anam chat...");
     setIsAnamChatOpen(false);
   };
 
   return (
     <div className="min-h-screen relative overflow-hidden">
+      {/* Debug indicator */}
+      <div style={{ position: 'fixed', top: '10px', left: '10px', background: 'red', color: 'white', padding: '4px 8px', borderRadius: '4px', zIndex: 9999, fontSize: '12px' }}>
+        Chat State: {isAnamChatOpen ? 'OPEN' : 'CLOSED'}
+      </div>
+
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image 
@@ -40,10 +47,8 @@ export default function Home() {
           
           {/* Pulsating Mia avatar - 300px */}
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              console.log("Mia avatar clicked");
+            onClick={() => {
+              console.log("🖱️ Avatar button clicked!");
               openAnamChat();
             }}
             className="relative w-[300px] h-[300px] rounded-full border-8 border-white shadow-2xl pulsating hover:scale-105 transition-transform duration-200 cursor-pointer overflow-hidden bg-white"

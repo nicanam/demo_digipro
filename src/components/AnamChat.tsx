@@ -12,6 +12,8 @@ const AnamChat: React.FC<AnamChatProps> = ({
   isOpen = false,
   onClose,
 }) => {
+  console.log("🎨 AnamChat component rendered with isOpen:", isOpen);
+  
   const [isChatActive, setIsChatActive] = useState(false);
   const [anamClient, setAnamClient] = useState<AnamClient | null>(null);
   const [isLoadingAI, setIsLoadingAI] = useState(false);
@@ -169,7 +171,12 @@ const AnamChat: React.FC<AnamChatProps> = ({
     };
   }, [anamClient]);
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    console.log("🚫 AnamChat not rendering - isOpen is false");
+    return null;
+  }
+
+  console.log("✅ AnamChat rendering chat widget...");
 
   return (
     <div className="fixed bottom-6 right-6 z-50 w-96 h-[600px] bg-white rounded-2xl shadow-2xl border overflow-hidden">
