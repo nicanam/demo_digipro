@@ -20,11 +20,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Debug indicator */}
-      <div style={{ position: 'fixed', top: '10px', left: '10px', background: 'red', color: 'white', padding: '4px 8px', borderRadius: '4px', zIndex: 9999, fontSize: '12px' }}>
-        Chat State: {isAnamChatOpen ? 'OPEN' : 'CLOSED'}
-      </div>
-
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image 

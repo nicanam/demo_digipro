@@ -138,6 +138,7 @@ const AnamChat: React.FC<AnamChatProps> = ({
 
       console.log("🎬 Video stream started successfully");
       setIsChatActive(true);
+      console.log("✅ Chat is now ACTIVE - overlay should be hidden");
     } catch (err: unknown) {
       console.error("❌ Error starting AI chat:", err);
       
@@ -240,7 +241,7 @@ const AnamChat: React.FC<AnamChatProps> = ({
 
       {/* Video Chat Area */}
       <div className="flex-grow bg-gray-900 relative h-[400px]">
-        {(isLoadingAI || error || !isChatActive) && (
+        {!isChatActive && (
           <div className="absolute inset-0 flex items-center justify-center z-30 bg-black/60">
             {isLoadingAI && (
               <div className="text-white text-sm flex flex-col items-center">
@@ -279,7 +280,7 @@ const AnamChat: React.FC<AnamChatProps> = ({
                 </button>
               </div>
             )}
-            {!isLoadingAI && !error && !isChatActive && (
+            {!isLoadingAI && !error && (
               <div className="text-white text-sm flex flex-col items-center p-4">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4 flex items-center justify-center overflow-hidden">
                   <Image
@@ -322,6 +323,13 @@ const AnamChat: React.FC<AnamChatProps> = ({
           controls={false}
         ></video>
         <audio ref={audioRef} id="anam-audio-feed"></audio>
+        
+        {/* Error overlay for active chat */}
+        {isChatActive && error && (
+          <div className="absolute top-4 left-4 right-4 bg-red-600 text-white text-xs p-2 rounded z-40">
+            ⚠️ {error}
+          </div>
+        )}
       </div>
 
       {/* Chat Controls */}
